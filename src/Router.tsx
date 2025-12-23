@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Login from "./login/Login";
-import { App as PurchaseOrderApp } from "./purchaseOrder/App";
+import Login from "./Login";
+import { App as PurchaseOrderApp } from "./App";
 
 export const Router: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
