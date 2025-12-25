@@ -61,7 +61,7 @@ export const App: React.FC = () => {
   const API_BASE_URL = (
     (isLocalhost
       ? "http://localhost:4000"
-      : import.meta.env.VITE_API_BASE_URL || "https://pi-generator-server-05-1.onrender.com")
+      : import.meta.env.VITE_API_BASE_URL || "https://pi-generator-server-25.onrender.com")
   ).replace(/\/+$/, "");
 
   const fetchWithTimeout = async (
