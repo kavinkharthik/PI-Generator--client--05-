@@ -123,14 +123,14 @@ body {
 }
 
 .btn-add-row {
-  background-color: #e0e7ff;
-  color: #4f46e5;
+  background-color: #4f46e5;
+  color: #ffffff;
   margin-top: 15px;
   font-weight: 600;
 }
 
 .btn-add-row:hover:not(:disabled) {
-  background-color: #c7d2fe;
+  background-color: #4338ca;
 }
 
 .po-table .right { text-align: right; }

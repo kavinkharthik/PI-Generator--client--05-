@@ -433,7 +433,7 @@ export const App: React.FC = () => {
                 <th>Rate (Rs.)</th>
                 <th>Quantity</th>
                 <th>Amount (Rs. Ps.)</th>
-                <th></th>
+                {items.length > 1 && <th>Action</th>}
               </tr>
             </thead>
             <tbody>
@@ -490,8 +490,8 @@ export const App: React.FC = () => {
                     <td className="right">
                       {isNaN(amount) ? "" : amount.toFixed(2)}
                     </td>
-                    <td>
-                      {items.length > 1 && (
+                    {items.length > 1 && (
+                      <td className="center">
                         <button
                           type="button"
                           onClick={() => removeRow(index)}
@@ -499,8 +499,8 @@ export const App: React.FC = () => {
                         >
                           Remove
                         </button>
-                      )}
-                    </td>
+                      </td>
+                    )}
                   </tr>
                 );
               })}
