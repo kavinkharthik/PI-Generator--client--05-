@@ -40,9 +40,9 @@ const emptyForm: FormState = {
   transportMode: "",
   deliveryDate: "",
   destination: "",
-  cgstRate: "0",
-  sgstRate: "0",
-  igstRate: "0",
+  cgstRate: "2.5",
+  sgstRate: "2.5",
+  igstRate: "12",
   toEmail: "",
   emailSubject: "Purchase Order – SRI CHAKRI TRADERS",
   emailBody: "",
@@ -448,10 +448,19 @@ export const App: React.FC = () => {
                       <input
                         value={row.particulars}
                         maxLength={80}
+                        list="particulars-options"
                         onChange={(e) =>
                           handleItemChange(index, "particulars", e.target.value)
                         }
                       />
+                      <datalist id="particulars-options">
+                        <option value="White Satin" />
+                        <option value="Black Satin" />
+                        <option value="Colour Satin" />
+                        <option value="White Tafetta" />
+                        <option value="Black Tafetta" />
+                        <option value="Colour Tafetta" />
+                      </datalist>
                     </td>
                     <td>
                       <input
@@ -604,6 +613,7 @@ export const App: React.FC = () => {
     </div>
   );
 };
+
 
 
 
