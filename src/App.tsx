@@ -45,7 +45,7 @@ const emptyForm: FormState = {
   igstRate: "12",
   toEmail: "",
   emailSubject: "Purchase Order – SRI CHAKRI TRADERS",
-  emailBody: "",
+  emailBody: "Dear Sir/Madam,\n\nPlease find the attached Proforma Invoice.\n\nRegards,\nSRI CHAKRI TRADERS",
 };
 
 const maxItems = 10;
@@ -423,98 +423,105 @@ export const App: React.FC = () => {
 
         <fieldset>
           <legend>Line Items</legend>
-          <table className="po-table">
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Particulars</th>
-                <th>HSN Code</th>
-                <th>D.C. No</th>
-                <th>Rate (Rs.)</th>
-                <th>Quantity</th>
-                <th>Amount (Rs. Ps.)</th>
-                {items.length > 1 && <th>Action</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((row, index) => {
-                const rate = parseFloat(row.rate || "0") || 0;
-                const qty = parseFloat(row.quantity || "0") || 0;
-                const amount = rate * qty;
-                return (
-                  <tr key={index}>
-                    <td className="center">{index + 1}</td>
-                    <td>
-                      <input
-                        value={row.particulars}
-                        maxLength={80}
-                        list="particulars-options"
-                        onChange={(e) =>
-                          handleItemChange(index, "particulars", e.target.value)
-                        }
-                      />
-                      <datalist id="particulars-options">
-                        <option value="White Satin" />
-                        <option value="Black Satin" />
-                        <option value="Colour Satin" />
-                        <option value="White Tafetta" />
-                        <option value="Black Tafetta" />
-                        <option value="Colour Tafetta" />
-                      </datalist>
-                    </td>
-                    <td>
-                      <input
-                        value={row.hsn}
-                        maxLength={20}
-                        onChange={(e) =>
-                          handleItemChange(index, "hsn", e.target.value)
-                        }
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={row.dcNo}
-                        maxLength={20}
-                        onChange={(e) =>
-                          handleItemChange(index, "dcNo", e.target.value)
-                        }
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={row.rate}
-                        onChange={(e) =>
-                          handleItemChange(index, "rate", e.target.value)
-                        }
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={row.quantity}
-                        onChange={(e) =>
-                          handleItemChange(index, "quantity", e.target.value)
-                        }
-                      />
-                    </td>
-                    <td className="right">
-                      {isNaN(amount) ? "" : amount.toFixed(2)}
-                    </td>
-                    {items.length > 1 && (
-                      <td className="center">
-                        <button
-                          type="button"
-                          onClick={() => removeRow(index)}
-                          className="link-button"
-                        >
-                          Remove
-                        </button>
+          <div className="table-responsive">
+            <table className="po-table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Particulars</th>
+                  <th>HSN Code</th>
+                  <th>D.C. No</th>
+                  <th>Rate (Rs.)</th>
+                  <th>Quantity</th>
+                  <th>Amount (Rs. Ps.)</th>
+                  {items.length > 1 && <th>Action</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((row, index) => {
+                  const rate = parseFloat(row.rate || "0") || 0;
+                  const qty = parseFloat(row.quantity || "0") || 0;
+                  const amount = rate * qty;
+                  return (
+                    <tr key={index}>
+                      <td className="center">{index + 1}</td>
+                      <td>
+                        <input
+                          value={row.particulars}
+                          maxLength={80}
+                          list="particulars-options"
+                          onChange={(e) =>
+                            handleItemChange(index, "particulars", e.target.value)
+                          }
+                          placeholder="Item Description"
+                        />
+                        <datalist id="particulars-options">
+                          <option value="White Satin" />
+                          <option value="Black Satin" />
+                          <option value="Colour Satin" />
+                          <option value="White Tafetta" />
+                          <option value="Black Tafetta" />
+                          <option value="Colour Tafetta" />
+                        </datalist>
                       </td>
-                    )}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                      <td>
+                        <input
+                          value={row.hsn}
+                          maxLength={20}
+                          onChange={(e) =>
+                            handleItemChange(index, "hsn", e.target.value)
+                          }
+                          placeholder="HSN"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={row.dcNo}
+                          maxLength={20}
+                          onChange={(e) =>
+                            handleItemChange(index, "dcNo", e.target.value)
+                          }
+                          placeholder="DC Number"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={row.rate}
+                          onChange={(e) =>
+                            handleItemChange(index, "rate", e.target.value)
+                          }
+                          placeholder="0.00"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={row.quantity}
+                          onChange={(e) =>
+                            handleItemChange(index, "quantity", e.target.value)
+                          }
+                          placeholder="0"
+                        />
+                      </td>
+                      <td className="right">
+                        {isNaN(amount) ? "" : amount.toFixed(2)}
+                      </td>
+                      {items.length > 1 && (
+                        <td className="center">
+                          <button
+                            type="button"
+                            onClick={() => removeRow(index)}
+                            className="link-button"
+                          >
+                            Remove
+                          </button>
+                        </td>
+                      )}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
           <button
             type="button"
             onClick={addRow}
@@ -578,7 +585,7 @@ export const App: React.FC = () => {
             />
           </label>
           <label>
-            Body
+            Message
             <textarea
               name="emailBody"
               value={form.emailBody}

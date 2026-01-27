@@ -3,7 +3,17 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .po-container {
   max-width: 1200px;
@@ -56,13 +66,19 @@ body {
   margin-left: -10px;
 }
 
-.grid-2, .grid-3 {
+.grid-2,
+.grid-3 {
   display: grid;
   gap: 20px;
 }
 
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
 
 .po-form label {
   display: flex;
@@ -72,7 +88,8 @@ body {
   font-weight: 500;
 }
 
-.po-form input, .po-form textarea {
+.po-form input,
+.po-form textarea {
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -83,20 +100,31 @@ body {
   color: #111827;
 }
 
-.po-form input:focus, .po-form textarea:focus {
+.po-form input:focus,
+.po-form textarea:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
   background-color: #fff;
 }
 
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
 .po-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  min-width: 800px;
+  /* Ensure table doesn't squash too much */
 }
 
-.po-table th, .po-table td {
+.po-table th,
+.po-table td {
   padding: 14px 16px;
   border-bottom: 1px solid #e5e7eb;
   text-align: left;
@@ -133,8 +161,13 @@ body {
   background-color: #4338ca;
 }
 
-.po-table .right { text-align: right; }
-.po-table .center { text-align: center; }
+.po-table .right {
+  text-align: right;
+}
+
+.po-table .center {
+  text-align: center;
+}
 
 .link-button {
   background: none;
@@ -194,7 +227,8 @@ body {
   box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
 }
 
-.error, .success {
+.error,
+.success {
   padding: 15px;
   margin-top: 20px;
   border-radius: 8px;
@@ -216,7 +250,9 @@ body {
 }
 
 @media (max-width: 768px) {
-  .grid-2, .grid-3 {
+
+  .grid-2,
+  .grid-3 {
     grid-template-columns: 1fr;
   }
 
@@ -251,7 +287,3 @@ body {
     font-size: 1rem;
   }
 }
-
-
-
-
